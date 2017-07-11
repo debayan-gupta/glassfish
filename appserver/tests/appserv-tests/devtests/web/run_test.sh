@@ -155,6 +155,9 @@ get_test_target(){
 		web_all )
 			TARGET=all
 			export TARGET;;
+                * )
+                        TARGET=$1
+                        export TARGET;;
 	esac
 
 }
