@@ -114,6 +114,37 @@ is_target(){
         "clustering" | \
         "ha" | \
         "embedded-all" | \
+        "web_jsp" | \
+        "web_taglib" | \
+        "web_el" | \
+        "web_servlet-1" | \
+        "web_servlet-2" | \
+        "web_servlet-3" | \
+        "web_servlet-4" | \
+        "web_servlet-5" | \
+        "web_servlet-6" | \
+        "web_servlet-7" | \
+        "web_servlet-8" | \
+        "web_servlet-9" | \
+        "web_servlet-10" | \
+        "web_servlet-11" | \
+        "web_servlet-12" | \
+        "web_servlet-13" | \
+        "web_web-container-1" | \
+        "web_web-container-2" | \
+        "web_web-container-3" | \
+        "web_web-container-4" | \
+        "web_web-container-5" | \
+        "web_web-container-6" | \
+        "web_web-container-7" | \
+        "web_web-container-8" | \
+        "web_security" | \
+        "web_http-connector" | \
+        "web_comet" | \
+        "web_misc" | \
+        "web_weblogicDD" | \
+        "web_clustering" | \
+        "web_ha" | \
         "all") echo 1;;
         *) echo 0;;
     esac
@@ -268,7 +299,8 @@ run_test_id(){
 }
 
 list_test_ids(){
-    echo web_all
+    echo web_all web_jsp web_taglib web_el web_servlet-1 web_servlet-2 web_servlet-3 web_servlet-4 web_servlet-5 web_servlet-6 web_servlet-7 web_servlet-8 web_servlet-9 web_servlet-10 web_servlet-11 web_servlet-12 web_servlet-13 web_web-container-1 web_web-container-2 web_web-container-3 web_web-container-4 web_web-container-5 web_web-container-6 web_web-container-7 web_web-container-8 web_security web_http-connector web_comet web_misc web_weblogicDD web_clustering web_ha
+
 }
 post_test_run(){
     copy_test_artifects
