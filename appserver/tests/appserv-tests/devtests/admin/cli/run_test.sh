@@ -81,7 +81,7 @@ get_test_target(){
 		admin_cli_all )
 			TARGET=all
 			export TARGET;;
-         esac
+        esac
 
 }
 
