@@ -145,6 +145,7 @@
                         configs, sync, domain, backup, tokens, validation, node,
                         logging-command,load-balancer, getset, misc-commands, all-jms, manual-sync, upgrade,
                         restart-domain, config-modularity, teardown"/>
+
     <target name="cluster" depends="init">
         <runtest classname="admin.ClusterTest"/>
     </target>
