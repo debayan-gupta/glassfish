@@ -5,8 +5,8 @@
 
 <target name="instrument">
 		<!-- Step 2: Instrument class files -->
-		<jacoco:instrument>
-			<fileset dir="."  destdir="./instr">
+		<jacoco:instrument destdir="./instr">
+			<fileset dir=".">
                         <exclude name="**/javax.*.jar"/>
                         <exclude name="**/javax.json.jar"/>
                          <exclude name="**/yasson.jar"/>
