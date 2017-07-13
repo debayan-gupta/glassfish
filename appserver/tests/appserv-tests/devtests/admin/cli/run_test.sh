@@ -63,9 +63,11 @@ run_test_id(){
 	cd `dirname $0`
 	test_init
         cd $S1AS_HOME
-        ant -f ./jacoco_build.xml instrument
+        echo `pwd`
+        ant -f /net/gf-hudson/scratch/gf-hudson/export2/hudson/tools/jacoco_build.xml instrument
         cp -rpf ./instr/appserver/admin ./appserver/admin
         cd -
+        echo `pwd`
 	get_test_target $1
 	test_run
 	check_successful_run
