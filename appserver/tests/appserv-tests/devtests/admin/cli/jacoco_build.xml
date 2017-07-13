@@ -1,0 +1,25 @@
+<project name="Example Ant Build with JaCoCo Offline Instrumentation" default="rebuild" xmlns:jacoco="antlib:org.jacoco.ant">
+<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+		<!--classpath path="/home/debayan/jacoco/jacocoant.jar" /-->
+</taskdef>
+
+<target name="instrument">
+		<!-- Step 2: Instrument class files -->
+		<jacoco:instrument destdir="./instr">
+			<fileset dir=".">
+                        <exclude name="**/javax.*.jar"/>
+                        <exclude name="**/javax.json.jar"/>
+                         <exclude name="**/yasson.jar"/>
+                        <exclude name="**/*.zip"/>
+                        <exclude name="**/*.jar"/>
+                        <include name="**/*.class"/>
+                        <exclude name="**/javax.json.bind-api.jar@module-info.class"/>
+                        </fileset>
+                 <zipfileset dir=".">
+                     <include name="**/*.jar"/>
+                     <exclude name="**/javax.*.jar"/>
+                    <exclude name="**/yasson.jar"/>
+                 </zipfileset>
+		</jacoco:instrument>
+	</target>
+</project>
