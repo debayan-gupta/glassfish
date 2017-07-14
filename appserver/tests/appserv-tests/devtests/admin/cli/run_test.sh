@@ -73,6 +73,7 @@ run_test_id(){
         cd -
         rm -rf $S1AS_HOME/modules
         mv $S1AS_HOME/instr $S1AS_HOME/modules
+        cp /net/gf-hudson/scratch/gf-hudson/export2/hudson/tools/ant-1.7.1/lib/jacocoant.jar $S1AS_HOME/modules
         echo `pwd`
 	get_test_target $1
 	test_run
