@@ -453,6 +453,7 @@
     </target>
 
     <target name="build" depends="init-path">
+        <echo message="Classoath is ${THE_CLASSPATH}"/>
         <mkdir dir="build"/>
         <javac srcdir="src" destdir="build" debug="true" fork="true"
                classpath="${THE_CLASSPATH}"

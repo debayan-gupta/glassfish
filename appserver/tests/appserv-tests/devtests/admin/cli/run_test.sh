@@ -51,7 +51,7 @@ test_run(){
 	fi
         export CLASSPATH=$CLASSPATH:$ANT_HOME/lib/jacocoant.jar
 	ant clean
-	time ant -Dnum_tests=45 $TARGET | tee $TEST_RUN_LOG
+	time ant -lib /net/gf-hudson/scratch/gf-hudson/export2/hudson/tools/ant-1.7.1/lib/ -Dnum_tests=45 $TARGET | tee $TEST_RUN_LOG
 	egrep 'FAILED *0' "$APS_HOME/count.txt" >/dev/null
 }
 
