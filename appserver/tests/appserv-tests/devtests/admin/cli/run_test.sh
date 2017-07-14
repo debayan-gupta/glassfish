@@ -69,10 +69,9 @@ run_test_id(){
         ant -f ./jacoco_build.xml instrument
         #cp -rpf ./instr/appserver/admin ./appserver/admin
         cp -r ./instr/ ..
-        cd ..
-        rm -rf ./modules
-        mv instr modules
-        cd `dirname $0`
+        cd -
+        rm -rf $S1AS_HOME/modules
+        mv $S1AS_HOME/instr $S1AS_HOME/modules
         echo `pwd`
 	get_test_target $1
 	test_run
