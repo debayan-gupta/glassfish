@@ -49,6 +49,7 @@ test_run(){
 	  echo "Windows ROOT: $ROOT"
 	  export CYGWIN=nontsec
 	fi
+        export CLASSPATH=$CLASSPATH:$ANT_HOME/lib/jacocoant.jar
 	ant clean
 	time ant -Dnum_tests=45 $TARGET | tee $TEST_RUN_LOG
 	egrep 'FAILED *0' "$APS_HOME/count.txt" >/dev/null
