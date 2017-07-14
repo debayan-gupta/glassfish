@@ -62,13 +62,17 @@ run_test_id(){
 	unzip_test_resources $WORKSPACE/bundles/glassfish.zip
 	cd `dirname $0`
 	test_init
-        cp ./jacoco_build.xml $S1AS_HOME/glassfish
-        cd $S1AS_HOME/glassfish
+        cp ./jacoco_build.xml $S1AS_HOME/modules
+        cd $S1AS_HOME/modules
         echo `pwd`
         echo `ls` 
-        ant -f $S1AS_HOME/glassfish/jacoco_build.xml instrument
-        cp -rpf ./instr/appserver/admin ./appserver/admin
-        cd -
+        ant -f ./jacoco_build.xml instrument
+        #cp -rpf ./instr/appserver/admin ./appserver/admin
+        cp -r ./instr/ ..
+        cd ..
+        rm -rf ./modules
+        mv instr modules
+        cd `dirname $0`
         echo `pwd`
 	get_test_target $1
 	test_run
