@@ -135,6 +135,7 @@
             <pathelement location="build"/>
             <pathelement location="${env.S1AS_HOME}/lib/gf-client.jar"/>
             <pathelement location="${env.S1AS_HOME}/modules/common-util.jar"/>
+            <pathelement location="/net/gf-hudson/scratch/gf-hudson/export2/hudson/tools/ant-1.7.1/lib/jacocoant.jar"/>
         </path>
         <pathconvert refid="class.path" property="THE_CLASSPATH"/>
     </target>
