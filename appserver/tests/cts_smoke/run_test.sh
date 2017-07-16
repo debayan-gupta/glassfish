@@ -201,7 +201,7 @@ run_test_id(){
 		test_run_servlet_tck
 		result=$WORKSPACE/results/tests.log
         elif [[ $1 = "cts_smoke_group_1" ]]; then
-                export TEST_ID = "test.area.1"
+                export TEST_ID=test.area.1
                 test_run_cts_smoke
 	else
 		echo "Invalid Test ID"
