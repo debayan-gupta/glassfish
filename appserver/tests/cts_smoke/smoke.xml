@@ -123,9 +123,9 @@
         com/sun/ts/tests/ejb32/lite/timer/service/singleton,
         com/sun/ts/tests/jta/ee/usertransaction/commit,
         com/sun/ts/tests/samples/jdbc/ee/testConn,
-        com/sun/ts/tests/integration/entity/jspejbjdbc">
-       <property name="test.id" value="${testId}">
-       <propertycopy name="test.area.group" from="${test.id}">
+        com/sun/ts/tests/integration/entity/jspejbjdbc"/>
+       <property name="test.id" value="${testId}"/>
+       <propertycopy name="test.area.group" from="${test.id}"/>
 	<target name="usage">
 		<echo message="&#10;tsant -buildfile smoke.xml smoke&#10;tsant -buildfile smoke.xml build&#10;tsant -buildfile smoke.xml clean&#10;tsant -buildfile smoke.xml runclient&#10;tsant -buildfile smoke.xml printall&#10;tsant -buildfile smoke.xml usage&#10;"/>
 	</target>
