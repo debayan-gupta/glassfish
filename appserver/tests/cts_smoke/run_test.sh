@@ -75,7 +75,8 @@ test_run_cts_smoke(){
 
 	wget $CTS_SMOKE/$CTS_SMOKE_BUNDLE
 	unzip -q $CTS_SMOKE_BUNDLE
-        cp -p ./smoke.xml $TS_HOME/bin/xml
+        echo `dirname $0`
+        cp -p `dirname $0`/smoke.xml $TS_HOME/bin/xml
 	cd $TS_HOME/bin
 	#cp $CTS_SMOKE/$CTS_EXCLUDE_LIST .
 	cp ts.jte ts.jte.orig
@@ -117,7 +118,7 @@ test_run_cts_smoke(){
 	$S1AS_HOME/bin/asadmin create-jvm-options "-Djava.security.manager"
 	$S1AS_HOME/bin/asadmin stop-domain
 
-	$TS_HOME/tools/ant/bin/ant -DtestId=${TEST_ID} -f smoke.xml smoke
+	$TS_HOME/tools/ant/bin/ant -DtestId=${TESTID} -f smoke.xml smoke
 
 	#POST CLEANUPS
 	kill_process
@@ -201,7 +202,7 @@ run_test_id(){
 		test_run_servlet_tck
 		result=$WORKSPACE/results/tests.log
         elif [[ $1 = "cts_smoke_group_1" ]]; then
-                export TEST_ID=test.area.1
+                export TESTID=test.area.1
                 test_run_cts_smoke
 	else
 		echo "Invalid Test ID"
