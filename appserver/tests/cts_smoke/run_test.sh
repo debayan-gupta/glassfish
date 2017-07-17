@@ -1,4 +1,5 @@
-#!/bin/bash -ex# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+#!/bin/bash -ex
+# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 #
 
 # Copyright (c) 2017 Oracle and/or its affiliates. All rights reserved.
@@ -219,7 +220,7 @@ post_test_run(){
 	  	if [[ $TEST_ID = "servlet_tck_all" ]]; then
 	  		archive_servlet_tck || true
 	  	fi
-           if [[ $TEST_ID = "cts_smoke_group_1" ]]; then
+           if [[ $TEST_ID = "cts_smoke_group_"* ]]; then
                         archive_cts || true
                 fi
 
