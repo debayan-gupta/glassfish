@@ -206,7 +206,7 @@ run_test_id(){
 		test_run_servlet_tck
 		result=$WORKSPACE/results/tests.log
          elif [[ $1 = "servlet_tck_group" ]]; then
-                export TARGETDIR=common/webclient
+                export TARGETDIR=servlet
                 test_run_servlet_tck
                 result=$WORKSPACE/results/tests.log
         elif [[ $1 = "cts_smoke_group_"* ]]; then
