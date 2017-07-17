@@ -176,6 +176,9 @@ test_run_servlet_tck(){
 	ant deploy.all
 
 	cd $TS_HOME/src/com/sun/ts/tests
+        if [ -n "${TARGETDIR}" ]; then
+           cd $TARGETDIR
+        fi
 	(ant runclient -Dreport.dir=$WORKSPACE/servlettck/report | tee $WORKSPACE/tests.log) || true
 
 	cd $S1AS_HOME
@@ -202,6 +205,10 @@ run_test_id(){
 	elif [[ $1 = "servlet_tck_all" ]]; then
 		test_run_servlet_tck
 		result=$WORKSPACE/results/tests.log
+         elif [[ $1 = "servlet_tck_group" ]]; then
+                export TARGETDIR=common/webclient
+                test_run_servlet_tck
+                result=$WORKSPACE/results/tests.log
         elif [[ $1 = "cts_smoke_group_"* ]]; then
                 export TESTID=$1
                 test_run_cts_smoke
