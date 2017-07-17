@@ -228,6 +228,9 @@ post_test_run(){
 	  	if [[ $TEST_ID = "servlet_tck_all" ]]; then
 	  		archive_servlet_tck || true
 	  	fi
+                if [[ $TEST_ID = "servlet_tck_group" ]]; then
+                        archive_servlet_tck || true
+                fi
            if [[ $TEST_ID = "cts_smoke_group_"* ]]; then
                         archive_cts || true
                 fi
@@ -240,7 +243,7 @@ post_test_run(){
 
 
 list_test_ids(){
-	echo cts_smoke_all servlet_tck_all cts_smoke_group_1 cts_smoke_group_2 cts_smoke_group_3 cts_smoke_group_4 cts_smoke_group_5 cts_smoke_group_6
+	echo cts_smoke_all servlet_tck_all cts_smoke_group_1 cts_smoke_group_2 cts_smoke_group_3 cts_smoke_group_4 cts_smoke_group_5 cts_smoke_group_6 servlet_tck_group
 }
 
 cts_to_junit(){
