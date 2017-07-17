@@ -123,7 +123,9 @@
         com/sun/ts/tests/ejb32/lite/timer/service/singleton,
         com/sun/ts/tests/jta/ee/usertransaction/commit,
         com/sun/ts/tests/samples/jdbc/ee/testConn,
-        com/sun/ts/tests/integration/entity/jspejbjdbc"/>
+        com/sun/ts/tests/integration/entity/jspejbjdbc,
+        com/sun/ts/tests/websocket/ee/javax/websocket/server/serverendpoint,
+        com/sun/ts/tests/websocket/ee/javax/websocket/session"/>
         
         <property name="cts_smoke_group_2" value="com/sun/ts/tests/integration/entity/servletejbjdbc,
     com/sun/ts/tests/javamail/ee/multipart,
@@ -157,9 +159,7 @@
     com/sun/ts/tests/jsp/spec/tagext/resource/taghandler,
     com/sun/ts/tests/jstl/spec/sql/query,
     com/sun/ts/tests/jpa/core/basic,
-    com/sun/ts/tests/jpa/core/entitytest/persist/basic,
-    com/sun/ts/tests/websocket/ee/javax/websocket/server/serverendpoint,
-    com/sun/ts/tests/websocket/ee/javax/websocket/session"/>
+    com/sun/ts/tests/jpa/core/entitytest/persist/basic"/>
 
        <property name="test.id" value="${testId}"/>
        <propertycopy name="test.area.group" from="${test.id}"/>
