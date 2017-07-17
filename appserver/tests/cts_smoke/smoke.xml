@@ -118,12 +118,49 @@
     com/sun/ts/tests/ejb30/persistence/basic,
     com/sun/ts/tests/ejb30/persistence/entitytest/persist/basic"/>
   -->
-        <property name="test.area.1" value="com/sun/ts/tests/ejb/ee/sec/stateful/secpropagation,
+        <property name="cts_smoke_group_1" value="com/sun/ts/tests/ejb/ee/sec/stateful/secpropagation,
         com/sun/ts/tests/ejb/ee/tx/session/stateful/cm/TxRN_Exceptions,
         com/sun/ts/tests/ejb32/lite/timer/service/singleton,
         com/sun/ts/tests/jta/ee/usertransaction/commit,
         com/sun/ts/tests/samples/jdbc/ee/testConn,
         com/sun/ts/tests/integration/entity/jspejbjdbc"/>
+        
+        <property name="cts_smoke_group_2" value="com/sun/ts/tests/integration/entity/servletejbjdbc,
+    com/sun/ts/tests/javamail/ee/multipart,
+    com/sun/ts/tests/connector/localTx/connection,
+    com/sun/ts/tests/jms/ee/mdb/mdb_sndToQueue,
+    com/sun/ts/tests/jms/core20/appclient/jmscontextqueuetests,
+    com/sun/ts/tests/jms/ee20/cditests/mdb"/>
+
+       <property name="cts_smoke_group_3" value="com/sun/ts/tests/jms/ee20/ra/activationconfig/queue/selectorauto,
+    com/sun/ts/tests/jsonp/api/jsongeneratortests,
+    com/sun/ts/tests/concurrency/api/ManagedScheduledExecutorService,
+    com/sun/ts/tests/jsp/spec/core_syntax/actions/usebean,
+    com/sun/ts/tests/jsp/api/javax_servlet/jsp/tagext/bodytagsupport,
+    com/sun/ts/tests/servlet/api/javax_servlet/servletcontext"/>
+
+      <property name="cts_smoke_group_4" value=" com/sun/ts/tests/servlet/api/javax_servlet_http/httpservletrequest,
+    com/sun/ts/tests/servlet/api/javax_servlet/servletresponse,
+    com/sun/ts/tests/jaxrs/api/client/clientresponsecontext,
+    com/sun/ts/tests/jaxrpc/ee/w2j/rpc/encoded/marshalltest,
+    com/sun/ts/tests/webservices12/ejb/annotations/WSEjbSOAPHandlersTest,
+    com/sun/ts/tests/webservices12/servlet/WSMTOMSBAnnotationsTest"/>
+
+     <property name="cts_smoke_group_5" value="com/sun/ts/tests/webservices12/servlet/HandlerTest,
+    com/sun/ts/tests/webservices12/wsdlImport/file/simple2,
+    com/sun/ts/tests/webservices13/servlet/WSRespBindAndAddressingTestUsingAnnotations,
+    com/sun/ts/tests/webservices13/servlet/WSAddressingFeaturesTestUsingDDs,
+    com/sun/ts/tests/jaxws/ee/j2w/document/literal/marshalltest,
+    com/sun/ts/tests/jsp/api/javax_el/elresolver"/>
+
+     <property name="cts_smoke_group_6" value="com/sun/ts/tests/jsp/spec/el/language,
+    com/sun/ts/tests/jsp/spec/tagext/resource/taghandler,
+    com/sun/ts/tests/jstl/spec/sql/query,
+    com/sun/ts/tests/jpa/core/basic,
+    com/sun/ts/tests/jpa/core/entitytest/persist/basic,
+    com/sun/ts/tests/websocket/ee/javax/websocket/server/serverendpoint,
+    com/sun/ts/tests/websocket/ee/javax/websocket/session"/>
+
        <property name="test.id" value="${testId}"/>
        <propertycopy name="test.area.group" from="${test.id}"/>
 	<target name="usage">

@@ -1,7 +1,6 @@
-#!/bin/bash -ex
+#!/bin/bash -ex# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 #
-# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
-#
+
 # Copyright (c) 2017 Oracle and/or its affiliates. All rights reserved.
 #
 # The contents of this file are subject to the terms of either the GNU
@@ -201,9 +200,10 @@ run_test_id(){
 	elif [[ $1 = "servlet_tck_all" ]]; then
 		test_run_servlet_tck
 		result=$WORKSPACE/results/tests.log
-        elif [[ $1 = "cts_smoke_group_1" ]]; then
-                export TESTID=test.area.1
+        elif [[ $1 = "cts_smoke_group_"* ]]; then
+                export TESTID=$1
                 test_run_cts_smoke
+                result=$WORKSPACE/results/smoke.log
 	else
 		echo "Invalid Test ID"
 		exit 1
