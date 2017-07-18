@@ -5,7 +5,7 @@
     <import file="../../../bin/xml/ts.top.import.xml" optional="true"/>
 
     <property name="all.test.dir" value="
-              com/sun/ts/tests/servlet/api"/>
+              com/sun/ts/tests/servlet/api/javax_servlet"/>
 
     <target name="build.all.tests" >
         <echo message="Test Dirs:${all.test.dir}"/>
