@@ -141,7 +141,8 @@ test_run_servlet_tck(){
 	wget http://busgo1208.us.oracle.com/JWSCQE/links/builds/tcks/javaee_cts/8/nightly/servlettck-4.0_Latest.zip -O servlettck.zip
 
 	unzip -q servlettck.zip
-
+        cp -p `dirname $0`/build.xml $TS_HOME/bin/
+        echo "Successfully copied build.xml into servlet tck"
 	cd $TS_HOME/bin
 	cp ts.jte ts.jte.orig
 
@@ -176,9 +177,9 @@ test_run_servlet_tck(){
 	ant deploy.all
 
 	cd $TS_HOME/src/com/sun/ts/tests
-        if [ -n "${TARGETDIR}" ]; then
-           cd $TARGETDIR
-        fi
+       # if [ -n "${TARGETDIR}" ]; then
+           #cd $TARGETDIR
+        #fi
 	(ant runclient -Dreport.dir=$WORKSPACE/servlettck/report | tee $WORKSPACE/tests.log) || true
 
 	cd $S1AS_HOME
@@ -205,10 +206,10 @@ run_test_id(){
 	elif [[ $1 = "servlet_tck_all" ]]; then
 		test_run_servlet_tck
 		result=$WORKSPACE/results/tests.log
-         elif [[ $1 = "servlet_tck_group" ]]; then
-                export TARGETDIR=servlet
-                test_run_servlet_tck
-                result=$WORKSPACE/results/tests.log
+         #elif [[ $1 = "servlet_tck_group" ]]; then
+                #export TARGETDIR=servlet
+                #test_run_servlet_tck
+                #result=$WORKSPACE/results/tests.log
         elif [[ $1 = "cts_smoke_group_"* ]]; then
                 export TESTID=$1
                 test_run_cts_smoke
