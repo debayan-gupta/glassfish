@@ -142,7 +142,9 @@ test_run_servlet_tck(){
 
 	unzip -q servlettck.zip
         rm -rf $TS_HOME/bin/build.xml
+        rm -rf $TS_HOME/bin/xml/ts.top.import.xml
         cp -p `dirname $0`/build.xml $TS_HOME/bin/
+         cp -p `dirname $0`/ts.top.import.xml $TS_HOME/bin/xml/
         echo "Successfully copied build.xml into servlet tck"
 	cd $TS_HOME/bin
 	cp ts.jte ts.jte.orig
