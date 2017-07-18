@@ -141,11 +141,8 @@ test_run_servlet_tck(){
 	wget http://busgo1208.us.oracle.com/JWSCQE/links/builds/tcks/javaee_cts/8/nightly/servlettck-4.0_Latest.zip -O servlettck.zip
 
 	unzip -q servlettck.zip
-        rm -rf $TS_HOME/bin/build.xml
-        rm -rf $TS_HOME/bin/xml/ts.top.import.xml
-        cp -p `dirname $0`/build.xml $TS_HOME/bin/
-         cp -p `dirname $0`/ts.top.import.xml $TS_HOME/bin/xml/
-        echo "Successfully copied build.xml into servlet tck"
+        rm -rf $TS_HOME/bin/ts.jtx
+        cp -p `dirname $0`/ts.jtx $TS_HOME/bin/
 	cd $TS_HOME/bin
 	cp ts.jte ts.jte.orig
 
