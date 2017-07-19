@@ -142,6 +142,7 @@ test_run_servlet_tck(){
 
 	unzip -q servlettck.zip
         rm -rf $TS_HOME/bin/ts.jtx
+        exclude_testlist $INCLUDETESTS
         cp -p `dirname $0`/ts.jtx $TS_HOME/bin/
 	cd $TS_HOME/bin
 	cp ts.jte ts.jte.orig
@@ -165,7 +166,6 @@ test_run_servlet_tck(){
 	-e "s/tyrus-container-grizzly\.jar/tyrus-container-grizzly-client\.jar/g" \
 	-e "s/impl\.vi=/impl\.vi\=glassfish/g" \
 	> ts.jte
-
 	echo "# Disabling signature tests for CI build pipeline" >> ts.jtx
 	echo "com/sun/ts/tests/signaturetest/servlet/ServletSigTest.java#signatureTest" >> ts.jtx
 
@@ -206,10 +206,10 @@ run_test_id(){
 	elif [[ $1 = "servlet_tck_all" ]]; then
 		test_run_servlet_tck
 		result=$WORKSPACE/results/tests.log
-         #elif [[ $1 = "servlet_tck_group" ]]; then
-                #export TARGETDIR=servlet
-                #test_run_servlet_tck
-                #result=$WORKSPACE/results/tests.log
+         elif [[ $1 = "servlet_tck_grp_"* ]]; then
+                export INCLUDETESTS=$1
+                test_run_servlet_tck
+                result=$WORKSPACE/results/tests.log
         elif [[ $1 = "cts_smoke_group_"* ]]; then
                 export TESTID=$1
                 test_run_cts_smoke
@@ -229,7 +229,7 @@ post_test_run(){
 	  	if [[ $TEST_ID = "servlet_tck_all" ]]; then
 	  		archive_servlet_tck || true
 	  	fi
-                if [[ $TEST_ID = "servlet_tck_group" ]]; then
+                if [[ $TEST_ID = "servlet_tck_grp_"* ]]; then
                         archive_servlet_tck || true
                 fi
            if [[ $TEST_ID = "cts_smoke_group_"* ]]; then
@@ -244,7 +244,7 @@ post_test_run(){
 
 
 list_test_ids(){
-	echo cts_smoke_all servlet_tck_all cts_smoke_group_1 cts_smoke_group_2 cts_smoke_group_3 cts_smoke_group_4 cts_smoke_group_5 cts_smoke_group_6 servlet_tck_group
+	echo cts_smoke_all servlet_tck_all cts_smoke_group_1 cts_smoke_group_2 cts_smoke_group_3 cts_smoke_group_4 cts_smoke_group_5 cts_smoke_group_6 servlet_tck_grp_1 servlet_tck_grp_2 servlet_tck_grp_3 servlet_tck_grp_4 servlet_tck_grp_5
 }
 
 cts_to_junit(){
@@ -284,6 +284,28 @@ delete_workspace(){
     rm -rf $WORKSPACE/javaee-smoke > /dev/null || true
     rm $WORKSPACE/javaee-smoke-7.0_latest.zip > /dev/null || true
 } 
+
+exclude_testlist(){
+  echo "Executing exclude_testlist"
+  dirname=servlet_tck_grp_files
+  i=(`ls $dirname`)
+  echo "Argument:$1" 
+  cd $dirname
+        for filelist in ${i[@]}; do
+                if [ ! $filelist = $1 ]; then
+                    while IFS= read -r line; do
+                       echo  $line >> ../ts.jtx
+                    done < $filelist
+                fi
+        done;
+cd -
+l=(`cat ts.jtx | wc -l`)
+echo "Number of tests excluded"
+echo $l
+
+
+
+}
 
 OPT=$1
 TEST_ID=$2
