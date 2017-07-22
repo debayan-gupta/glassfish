@@ -75,7 +75,7 @@ test_run_cts_smoke(){
 
 	wget $CTS_SMOKE/$CTS_SMOKE_BUNDLE
 	unzip -q $CTS_SMOKE_BUNDLE
-
+        cp -p `dirname $0`/cts_smoke_test_group $TS_HOME/bin/xml/
 	cd $TS_HOME/bin
 	#cp $CTS_SMOKE/$CTS_EXCLUDE_LIST .
 	cp ts.jte ts.jte.orig
@@ -116,9 +116,11 @@ test_run_cts_smoke(){
 	$S1AS_HOME/bin/asadmin start-domain
 	$S1AS_HOME/bin/asadmin create-jvm-options "-Djava.security.manager"
 	$S1AS_HOME/bin/asadmin stop-domain
-
-	$TS_HOME/tools/ant/bin/ant -f smoke.xml smoke
-
+        if [ -n $TESTGROUP ]; then
+	    $TS_HOME/tools/ant/bin/ant -f smoke.xml -propertyfile=./cts_smoke_test_group/$TESTGROUP smoke
+        else
+            $TS_HOME/tools/ant/bin/ant -f smoke.xml smoke
+        fi
 	#POST CLEANUPS
 	kill_process
 
@@ -197,6 +199,10 @@ run_test_id(){
 	if [[ $1 = "cts_smoke_all" ]]; then
 		test_run_cts_smoke
 		result=$WORKSPACE/results/smoke.log
+        elif [[ $1 = "cts_smoke_group_"* ]]; then
+                export TESTGROUP="$1.properties"
+                test_run_cts_smoke
+                result=$WORKSPACE/results/smoke.log
 	elif [[ $1 = "servlet_tck_all" ]]; then
 		test_run_servlet_tck
 		result=$WORKSPACE/results/tests.log
@@ -209,7 +215,7 @@ run_test_id(){
 
 post_test_run(){
     if [[ $? -ne 0 ]]; then
-    	if [[ $TEST_ID = "cts_smoke_all" ]]; then
+    	if [[ $TEST_ID = "cts_smoke_all" || $TEST_ID = "cts_smoke_group_"* ]]; then
 	  		archive_cts || true
 	  	fi
 	  	if [[ $TEST_ID = "servlet_tck_all" ]]; then
@@ -223,7 +229,7 @@ post_test_run(){
 
 
 list_test_ids(){
-	echo cts_smoke_all servlet_tck_all
+	echo cts_smoke_all servlet_tck_all cts_smoke_group_1 cts_smoke_group_2 cts_smoke_group_3 cts_smoke_group_4 cts_smoke_group_5 cts_smoke_group_6
 }
 
 cts_to_junit(){
