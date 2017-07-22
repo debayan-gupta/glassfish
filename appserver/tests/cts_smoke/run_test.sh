@@ -75,7 +75,7 @@ test_run_cts_smoke(){
 
 	wget $CTS_SMOKE/$CTS_SMOKE_BUNDLE
 	unzip -q $CTS_SMOKE_BUNDLE
-        cp -p `dirname $0`/cts_smoke_test_group $TS_HOME/bin/xml/
+        cp -pr `dirname $0`/cts_smoke_test_group $TS_HOME/bin/xml/
 	cd $TS_HOME/bin
 	#cp $CTS_SMOKE/$CTS_EXCLUDE_LIST .
 	cp ts.jte ts.jte.orig
