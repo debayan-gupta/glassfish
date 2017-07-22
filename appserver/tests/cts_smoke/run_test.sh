@@ -118,7 +118,7 @@ test_run_cts_smoke(){
 	$S1AS_HOME/bin/asadmin stop-domain
 
         if [ -n $TESTGROUP ]; then
-	    $TS_HOME/tools/ant/bin/ant -Dreport.dir=$WORKSPACE/$BUILD_NUMBER/JTReport -Dwork.dir=$WORKSPACE/$BUILD_NUMBER/JTWork -fsmoke.xml -propertyfile=./cts_smoke_test_group/$TESTGROUP smoke
+	    $TS_HOME/tools/ant/bin/ant -Dreport.dir=$WORKSPACE/$BUILD_NUMBER/JTReport -Dwork.dir=$WORKSPACE/$BUILD_NUMBER/JTWork -f smoke.xml -propertyfile=./cts_smoke_test_group/$TESTGROUP smoke
         else
             $TS_HOME/tools/ant/bin/ant -Dreport.dir=$WORKSPACE/$BUILD_NUMBER/JTReport -Dwork.dir=$WORKSPACE/$BUILD_NUMBER/JTWork -f smoke.xml smoke
         fi
